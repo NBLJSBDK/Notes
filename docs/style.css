@@ -247,15 +247,15 @@ body.dark .sidebar-nav .folder:before {
   color: #3498db !important;
 }
 
-/* 上一页/下一页暗黑适配 */
-body.dark .pagination-item {
-  color: #888 !important;
-}
+/* --- 6. 智能提示块 (Alerts) 样式 --- */
+blockquote.alert-info { background-color: #f0f7ff !important; border-left-color: #3498db !important; color: #2c3e50 !important; }
+blockquote.alert-warning { background-color: #fff9eb !important; border-left-color: #f1c40f !important; color: #7d5a00 !important; }
+blockquote.alert-danger { background-color: #fff5f5 !important; border-left-color: #e74c3c !important; color: #c0392b !important; }
+blockquote.alert-success { background-color: #f6ffed !important; border-left-color: #52c41a !important; color: #237804 !important; }
 
-body.dark .pagination-item-title {
-  color: #3498db !important;
-}
+/* 暗黑模式提示块适配 */
+body.dark blockquote.alert-info { background-color: #1c2c3c !important; color: #89ddff !important; }
+body.dark blockquote.alert-warning { background-color: #3c2c1c !important; color: #ffcb6b !important; }
+body.dark blockquote.alert-danger { background-color: #3c1c1c !important; color: #ff5370 !important; }
+body.dark blockquote.alert-success { background-color: #1c3c1c !important; color: #a0d911 !important; }
 
-body.dark .pagination-item:hover .pagination-item-title {
-  color: #fff !important;
-}

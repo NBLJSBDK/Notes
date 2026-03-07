@@ -47,10 +47,14 @@
       plugins: [
         function(hook) {
           hook.doneEach(function() {
-            // 每次页面加载完成后执行一次回到顶部和刷新进度条（定义在 main.js 中）
+            // 每次页面加载完成后执行
             window.scrollTo(0, 0);
             if (typeof updateScrollEffects === 'function') {
               updateScrollEffects();
+            }
+            // 执行智能提示块贴标
+            if (typeof applySmartAlerts === 'function') {
+              applySmartAlerts();
             }
           });
         }
