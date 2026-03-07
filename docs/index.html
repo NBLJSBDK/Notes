@@ -13,42 +13,27 @@
     pre { padding: 16px !important; border-radius: 8px !important; margin: 1.2em 0 !important; border: 1px solid transparent; }
     code { font-family: 'Fira Code', 'Consolas', monospace !important; font-size: 0.92em !important; line-height: 1.5 !important; }
 
-    /* --- 2. 核心暗黑模式颜色定义 --- */
+    /* --- 2. 自定义组件样式 --- */
+    #custom-progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: #3498db; z-index: 10001; transition: width 0.1s ease; }
+    #custom-back-to-top {
+      position: fixed; bottom: 25px; right: 25px; width: 40px; height: 40px; background: #3498db; color: white; border: none; border-radius: 50%;
+      cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000; transition: all 0.3s;
+    }
+    #custom-back-to-top:hover { transform: translateY(-3px); background: #2980b9; }
+    #custom-back-to-top svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* --- 3. 核心暗黑模式 --- */
     body.dark {
-      background-color: #1a1a1a !important;
-      color: #d1d1d1 !important;
-      --base-background-color: #1a1a1a;
-      --base-color: #d1d1d1;
-      --heading-color: #eeeeee;
-      --sidebar-background: #252525;
-      --sidebar-name-color: #ffffff;
-      --sidebar-nav-link-color: #cccccc;
-      --sidebar-nav-link-color--active: #ffffff;
-      --sidebar-nav-pagetitle-color: #eeeeee;
-      --link-color: #3498db;
+      background-color: #1a1a1a !important; color: #d1d1d1 !important;
+      --base-background-color: #1a1a1a; --base-color: #d1d1d1; --heading-color: #eeeeee;
+      --sidebar-background: #252525; --sidebar-name-color: #ffffff; --sidebar-nav-link-color: #cccccc;
+      --sidebar-nav-link-color--active: #ffffff; --sidebar-nav-pagetitle-color: #eeeeee; --link-color: #3498db;
     }
-
-    /* 侧边栏折叠插件适配 */
-    body.dark .sidebar-nav .folder.collapse:before { color: #888 !important; }
-    body.dark .sidebar-nav .folder:before { color: #3498db !important; }
-
-    /* 强力覆盖暗黑背景 */
-    body.dark .content, body.dark .sidebar, body.dark .sidebar-nav, body.dark .markdown-section {
-      background-color: #1a1a1a !important;
-      color: #d1d1d1 !important;
-    }
-
-    /* --- 3. 上一页/下一页插件暗黑适配 --- */
-    body.dark .pagination-item { color: #888 !important; }
-    body.dark .pagination-item-title { color: #3498db !important; }
-    body.dark .pagination-item:hover .pagination-item-title { color: #fff !important; }
-
-    /* 其余暗黑修正 */
+    body.dark #custom-back-to-top { background: #333; color: #3498db; border: 1px solid #444; }
+    body.dark .content, body.dark .sidebar, body.dark .sidebar-nav, body.dark .markdown-section { background-color: #1a1a1a !important; color: #d1d1d1 !important; }
     body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark strong { color: #eeeeee !important; }
     body.dark .search input { background-color: #333 !important; color: #eee !important; border: 1px solid #444 !important; }
-    body.dark .search .search-results { background-color: #252525 !important; color: #ccc !important; }
     body.dark .sidebar-toggle { background-color: rgba(26, 26, 26, 0.8) !important; color: #3498db !important; }
-    body.dark .sidebar-toggle-button span { background-color: #3498db !important; }
     body.dark blockquote { background-color: #21262d !important; border-left-color: #3498db !important; color: #8b949e !important; }
     body.dark pre { background-color: #0d1117 !important; border: 1px solid #30363d !important; }
     body.dark pre code { color: #e6edf3 !important; text-shadow: none !important; }
@@ -60,15 +45,17 @@
     body.dark .token.string { color: #a5d6ff !important; }
     body.dark .token.operator { color: #ffab70 !important; }
     body.dark .token.keyword { color: #ff7b72 !important; }
-    
-    /* 表格 */
+    body.dark :not(pre) > code { background-color: rgba(110, 118, 129, 0.4) !important; color: #f0f6fc !important; padding: 0.2em 0.4em !important; border-radius: 6px !important; }
+
+    /* --- 4. 彻底还原：黑灰相间表格 --- */
     body.dark table { border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #303030 !important; background-color: #161616 !important; }
     body.dark th { background-color: #2c2c2c !important; color: #3498db !important; border: 1px solid #303030 !important; padding: 12px 10px !important; }
     body.dark td { border: 1px solid #303030 !important; padding: 12px 10px !important; }
-    body.dark tr:nth-child(even) { background-color: #242424 !important; }
-    body.dark tr:hover { background-color: #2d333b !important; }
+    body.dark tr:nth-child(odd) { background-color: #161616 !important; } /* 奇数行：深黑 */
+    body.dark tr:nth-child(even) { background-color: #242424 !important; } /* 偶数行：碳灰 */
+    body.dark tr:hover { background-color: #2d333b !important; } /* 悬停：深蓝灰 */
 
-    /* --- 4. 右上角切换按钮 --- */
+    /* --- 5. 右上角切换按钮 --- */
     #theme-toggle {
       position: fixed; top: 20px; right: 20px; width: 40px; height: 40px; background: #3498db; color: white; border: none; border-radius: 50%;
       cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -80,7 +67,11 @@
 </head>
 
 <body>
-  <button id="theme-toggle" title="切换深色/浅色模式">
+  <div id="custom-progress-bar"></div>
+  <button id="custom-back-to-top" title="Go to Top">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+  <button id="theme-toggle" title="Switch Theme">
     <svg viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
   </button>
 
@@ -91,17 +82,23 @@
       document.body.classList.toggle('dark', isDark);
       localStorage.setItem('docsify-dark-mode', isDark ? 'true' : 'false');
     };
-
     const savedTheme = localStorage.getItem('docsify-dark-mode');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme === 'true' || (savedTheme === null && prefersDark);
-    setTheme(initialDark);
+    setTheme(savedTheme === 'true' || (savedTheme === null && prefersDark));
+
+    function updateScrollEffects() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      document.getElementById("custom-progress-bar").style.width = scrolled + "%";
+      const btt = document.getElementById('custom-back-to-top');
+      if (winScroll > 500) { btt.style.display = 'flex'; } else { btt.style.display = 'none'; }
+    }
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('theme-toggle').onclick = () => {
-        const isDark = !document.body.classList.contains('dark');
-        setTheme(isDark);
-      };
+      document.getElementById('theme-toggle').onclick = () => setTheme(!document.body.classList.contains('dark'));
+      document.getElementById('custom-back-to-top').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.onscroll = updateScrollEffects;
     });
 
     window.$docsify = {
@@ -110,21 +107,19 @@
       themeColor: '#3498db',
       loadSidebar: true, 
       subMaxLevel: 2,
-      alias: {
-        '/.*/_sidebar.md': '/_sidebar.md' 
-      },
+      auto2top: true,
+      alias: { '/.*/_sidebar.md': '/_sidebar.md' },
       sidebarDisplayLevel: 1,
-      pagination: {
-        previousText: 'PREVIOUS',
-        nextText: 'NEXT',
-        crossChapter: true,
-        crossChapterText: true,
-      },
-      search: {
-        placeholder: '搜索笔记',
-        noData: '找不到结果',
-        depth: 6
-      }
+      pagination: { previousText: 'PREVIOUS', nextText: 'NEXT', crossChapter: true, crossChapterText: true },
+      search: { placeholder: '搜索笔记', noData: '找不到结果', depth: 6 },
+      plugins: [
+        function(hook) {
+          hook.doneEach(function() {
+            window.scrollTo(0, 0);
+            updateScrollEffects();
+          });
+        }
+      ]
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
@@ -132,9 +127,7 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
-  <!-- 引入上一页/下一页插件 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
