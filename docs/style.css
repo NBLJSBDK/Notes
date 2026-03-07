@@ -1,0 +1,261 @@
+/* --- 1. 全局布局统一 --- */
+blockquote {
+  padding: 15px 20px !important;
+  margin: 20px 0 !important;
+  border-radius: 0 6px 6px 0;
+  border-left: 4px solid #ddd;
+}
+
+pre {
+  padding: 16px !important;
+  border-radius: 8px !important;
+  margin: 1.2em 0 !important;
+  border: 1px solid transparent;
+}
+
+code {
+  font-family: 'Fira Code', 'Consolas', monospace !important;
+  font-size: 0.92em !important;
+  line-height: 1.5 !important;
+}
+
+/* --- 2. 自定义组件样式 --- */
+#custom-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: #3498db;
+  z-index: 10001;
+  transition: width 0.1s ease;
+}
+
+#custom-back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  transition: all 0.3s;
+}
+
+#custom-back-to-top:hover {
+  transform: translateY(-3px);
+  background: #2980b9;
+}
+
+#custom-back-to-top svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* --- 3. 核心暗黑模式 --- */
+body.dark {
+  background-color: #1a1a1a !important;
+  color: #d1d1d1 !important;
+  --base-background-color: #1a1a1a;
+  --base-color: #d1d1d1;
+  --heading-color: #eeeeee;
+  --sidebar-background: #252525;
+  --sidebar-name-color: #ffffff;
+  --sidebar-nav-link-color: #cccccc;
+  --sidebar-nav-link-color--active: #ffffff;
+  --sidebar-nav-pagetitle-color: #eeeeee;
+  --link-color: #3498db;
+}
+
+body.dark #custom-back-to-top {
+  background: #333;
+  color: #3498db;
+  border: 1px solid #444;
+}
+
+body.dark .content,
+body.dark .sidebar,
+body.dark .sidebar-nav,
+body.dark .markdown-section {
+  background-color: #1a1a1a !important;
+  color: #d1d1d1 !important;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark strong {
+  color: #eeeeee !important;
+}
+
+body.dark .search input {
+  background-color: #333 !important;
+  color: #eee !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark .sidebar-toggle {
+  background-color: rgba(26, 26, 26, 0.8) !important;
+  color: #3498db !important;
+}
+
+body.dark blockquote {
+  background-color: #21262d !important;
+  border-left-color: #3498db !important;
+  color: #8b949e !important;
+}
+
+body.dark pre {
+  background-color: #0d1117 !important;
+  border: 1px solid #30363d !important;
+}
+
+body.dark pre code {
+  color: #e6edf3 !important;
+  text-shadow: none !important;
+}
+
+/* 语法高亮增强 */
+body.dark .token.comment {
+  color: #8b949e !important;
+}
+
+body.dark .token.punctuation {
+  color: #89ddff !important;
+}
+
+body.dark .token.property,
+body.dark .token.tag,
+body.dark .token.number {
+  color: #79c0ff !important;
+}
+
+body.dark .token.string {
+  color: #a5d6ff !important;
+}
+
+body.dark .token.operator {
+  color: #ffab70 !important;
+}
+
+body.dark .token.keyword {
+  color: #ff7b72 !important;
+}
+
+body.dark :not(pre)>code {
+  background-color: rgba(110, 118, 129, 0.4) !important;
+  color: #f0f6fc !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 6px !important;
+}
+
+/* --- 4. 表格暗黑模式 --- */
+body.dark table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  border: 1px solid #303030 !important;
+  background-color: #161616 !important;
+}
+
+body.dark th {
+  background-color: #2c2c2c !important;
+  color: #3498db !important;
+  border: 1px solid #303030 !important;
+  padding: 12px 10px !important;
+}
+
+body.dark td {
+  border: 1px solid #303030 !important;
+  padding: 12px 10px !important;
+}
+
+body.dark tr:nth-child(odd) {
+  background-color: #161616 !important;
+}
+
+body.dark tr:nth-child(even) {
+  background-color: #242424 !important;
+}
+
+body.dark tr:hover {
+  background-color: #2d333b !important;
+}
+
+/* --- 5. 右上角切换按钮 --- */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark #theme-toggle {
+  background: #f1c40f;
+  color: #333;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+}
+
+#theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* 文本选区优化 */
+body.dark ::selection {
+  background: rgba(52, 152, 219, 0.4) !important;
+  color: #ffffff !important;
+}
+
+body.dark ::-moz-selection {
+  background: rgba(52, 152, 219, 0.4) !important;
+  color: #ffffff !important;
+}
+
+/* 侧边栏折叠插件适配 */
+body.dark .sidebar-nav .folder.collapse:before {
+  color: #888 !important;
+}
+
+body.dark .sidebar-nav .folder:before {
+  color: #3498db !important;
+}
+
+/* 上一页/下一页暗黑适配 */
+body.dark .pagination-item {
+  color: #888 !important;
+}
+
+body.dark .pagination-item-title {
+  color: #3498db !important;
+}
+
+body.dark .pagination-item:hover .pagination-item-title {
+  color: #fff !important;
+}

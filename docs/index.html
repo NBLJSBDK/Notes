@@ -5,68 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
+  <!-- 引入自定义样式 -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 引入主题样式和插件样式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
-  <style>
-    /* --- 1. 全局布局统一 --- */
-    blockquote { padding: 15px 20px !important; margin: 20px 0 !important; border-radius: 0 6px 6px 0; border-left: 4px solid #ddd; }
-    pre { padding: 16px !important; border-radius: 8px !important; margin: 1.2em 0 !important; border: 1px solid transparent; }
-    code { font-family: 'Fira Code', 'Consolas', monospace !important; font-size: 0.92em !important; line-height: 1.5 !important; }
-
-    /* --- 2. 自定义组件样式 --- */
-    #custom-progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: #3498db; z-index: 10001; transition: width 0.1s ease; }
-    #custom-back-to-top {
-      position: fixed; bottom: 25px; right: 25px; width: 40px; height: 40px; background: #3498db; color: white; border: none; border-radius: 50%;
-      cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 10000; transition: all 0.3s;
-    }
-    #custom-back-to-top:hover { transform: translateY(-3px); background: #2980b9; }
-    #custom-back-to-top svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* --- 3. 核心暗黑模式 --- */
-    body.dark {
-      background-color: #1a1a1a !important; color: #d1d1d1 !important;
-      --base-background-color: #1a1a1a; --base-color: #d1d1d1; --heading-color: #eeeeee;
-      --sidebar-background: #252525; --sidebar-name-color: #ffffff; --sidebar-nav-link-color: #cccccc;
-      --sidebar-nav-link-color--active: #ffffff; --sidebar-nav-pagetitle-color: #eeeeee; --link-color: #3498db;
-    }
-    body.dark #custom-back-to-top { background: #333; color: #3498db; border: 1px solid #444; }
-    body.dark .content, body.dark .sidebar, body.dark .sidebar-nav, body.dark .markdown-section { background-color: #1a1a1a !important; color: #d1d1d1 !important; }
-    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark strong { color: #eeeeee !important; }
-    body.dark .search input { background-color: #333 !important; color: #eee !important; border: 1px solid #444 !important; }
-    body.dark .sidebar-toggle { background-color: rgba(26, 26, 26, 0.8) !important; color: #3498db !important; }
-    body.dark blockquote { background-color: #21262d !important; border-left-color: #3498db !important; color: #8b949e !important; }
-    body.dark pre { background-color: #0d1117 !important; border: 1px solid #30363d !important; }
-    body.dark pre code { color: #e6edf3 !important; text-shadow: none !important; }
-    
-    /* 语法高亮增强 */
-    body.dark .token.comment { color: #8b949e !important; }
-    body.dark .token.punctuation { color: #89ddff !important; }
-    body.dark .token.property, body.dark .token.tag, body.dark .token.number { color: #79c0ff !important; }
-    body.dark .token.string { color: #a5d6ff !important; }
-    body.dark .token.operator { color: #ffab70 !important; }
-    body.dark .token.keyword { color: #ff7b72 !important; }
-    body.dark :not(pre) > code { background-color: rgba(110, 118, 129, 0.4) !important; color: #f0f6fc !important; padding: 0.2em 0.4em !important; border-radius: 6px !important; }
-
-    /* --- 4. 彻底还原：黑灰相间表格 --- */
-    body.dark table { border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #303030 !important; background-color: #161616 !important; }
-    body.dark th { background-color: #2c2c2c !important; color: #3498db !important; border: 1px solid #303030 !important; padding: 12px 10px !important; }
-    body.dark td { border: 1px solid #303030 !important; padding: 12px 10px !important; }
-    body.dark tr:nth-child(odd) { background-color: #161616 !important; } /* 奇数行：深黑 */
-    body.dark tr:nth-child(even) { background-color: #242424 !important; } /* 偶数行：碳灰 */
-    body.dark tr:hover { background-color: #2d333b !important; } /* 悬停：深蓝灰 */
-
-    /* --- 5. 右上角切换按钮 --- */
-    #theme-toggle {
-      position: fixed; top: 20px; right: 20px; width: 40px; height: 40px; background: #3498db; color: white; border: none; border-radius: 50%;
-      cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    body.dark #theme-toggle { background: #f1c40f; color: #333; }
-    #theme-toggle:hover { transform: scale(1.1) rotate(15deg); }
-    #theme-toggle svg { width: 20px; height: 20px; fill: currentColor; }
-  </style>
 </head>
 
 <body>
+  <!-- 自定义组件结构 -->
   <div id="custom-progress-bar"></div>
   <button id="custom-back-to-top" title="Go to Top">
     <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
@@ -77,30 +24,10 @@
 
   <div id="app">加载中...</div>
 
+  <!-- 引入自定义逻辑 -->
+  <script src="main.js"></script>
+
   <script>
-    const setTheme = (isDark) => {
-      document.body.classList.toggle('dark', isDark);
-      localStorage.setItem('docsify-dark-mode', isDark ? 'true' : 'false');
-    };
-    const savedTheme = localStorage.getItem('docsify-dark-mode');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(savedTheme === 'true' || (savedTheme === null && prefersDark));
-
-    function updateScrollEffects() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-      document.getElementById("custom-progress-bar").style.width = scrolled + "%";
-      const btt = document.getElementById('custom-back-to-top');
-      if (winScroll > 500) { btt.style.display = 'flex'; } else { btt.style.display = 'none'; }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('theme-toggle').onclick = () => setTheme(!document.body.classList.contains('dark'));
-      document.getElementById('custom-back-to-top').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-      window.onscroll = updateScrollEffects;
-    });
-
     window.$docsify = {
       name: '我的技术笔记',
       repo: '', 
@@ -110,24 +37,36 @@
       auto2top: true,
       alias: { '/.*/_sidebar.md': '/_sidebar.md' },
       sidebarDisplayLevel: 1,
-      pagination: { previousText: 'PREVIOUS', nextText: 'NEXT', crossChapter: true, crossChapterText: true },
+      pagination: { 
+        previousText: 'PREVIOUS', 
+        nextText: 'NEXT', 
+        crossChapter: true, 
+        crossChapterText: true 
+      },
       search: { placeholder: '搜索笔记', noData: '找不到结果', depth: 6 },
       plugins: [
         function(hook) {
           hook.doneEach(function() {
+            // 每次页面加载完成后执行一次回到顶部和刷新进度条（定义在 main.js 中）
             window.scrollTo(0, 0);
-            updateScrollEffects();
+            if (typeof updateScrollEffects === 'function') {
+              updateScrollEffects();
+            }
           });
         }
       ]
     }
   </script>
+
+  <!-- Docsify 核心和插件 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  
+  <!-- 语法高亮 -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
