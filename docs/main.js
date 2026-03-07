@@ -30,28 +30,27 @@ function updateScrollEffects() {
 }
 
 /**
- * 3. 智能提示块贴标逻辑
- * 识别 blockquote 中的关键词并添加对应的样式类
+ * 3. 智能提示块贴标逻辑 (精准匹配版)
+ * 仅识别以特定英文关键词开头的引用块，例如 "> NOTE:"
  */
 function applySmartAlerts() {
   const quotes = document.querySelectorAll('blockquote');
   quotes.forEach(quote => {
-    const text = quote.innerText.toUpperCase(); // 统一转大写进行匹配
+    // 获取纯文本，去除首尾空格并转为大写
+    const fullText = quote.innerText.trim().toUpperCase();
     
-    // 危险/红色
-    if (text.includes('禁止') || text.includes('危险') || text.includes('错误') || text.includes('严禁') || text.includes('DANGER') || text.includes('ERROR') || text.includes('FATAL')) {
+    // 检查开头是否匹配 [关键词]: 
+    // 这种格式能极大地减少误报
+    if (fullText.startsWith('DANGER:') || fullText.startsWith('ERROR:') || fullText.startsWith('FATAL:')) {
       quote.classList.add('alert-danger');
     } 
-    // 成功/绿色
-    else if (text.includes('成功') || text.includes('完成') || text.includes('已解决') || text.includes('SUCCESS') || text.includes('DONE')) {
+    else if (fullText.startsWith('SUCCESS:') || fullText.startsWith('DONE:')) {
       quote.classList.add('alert-success');
     }
-    // 警告/黄色
-    else if (text.includes('警告') || text.includes('小心') || text.includes('WARNING') || text.includes('CAUTION')) {
+    else if (fullText.startsWith('WARNING:') || fullText.startsWith('CAUTION:')) {
       quote.classList.add('alert-warning');
     } 
-    // 提示/蓝色 (由于提示最常见，放在最后匹配)
-    else if (text.includes('提示') || text.includes('注意') || text.includes('建议') || text.includes('说明') || text.includes('INFO') || text.includes('TIP') || text.includes('NOTE')) {
+    else if (fullText.startsWith('NOTE:') || fullText.startsWith('INFO:') || fullText.startsWith('TIP:')) {
       quote.classList.add('alert-info');
     }
   });
