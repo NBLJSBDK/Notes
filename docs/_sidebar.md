@@ -1,10 +1,10 @@
   * **notes**
     * [ASCII](notes/ASCII.md)
+    * [橡皮鸭子调试法](notes/橡皮鸭子调试法.md)
     * **AI**
       * [提示词工程进阶指南](notes/AI/提示词工程进阶指南.md)
     * **C语言**
       * [指针](notes/C语言/指针.md)
-      * [橡皮鸭子调试法](notes/C语言/橡皮鸭子调试法.md)
       * [算法入门](notes/C语言/算法入门.md)
       * [编程笔记](notes/C语言/编程笔记.md)
     * **Git**
