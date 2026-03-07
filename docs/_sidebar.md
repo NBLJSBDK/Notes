@@ -1,7 +1,5 @@
   * **notes**
     * [ASCII](notes/ASCII.md)
-    * **AI**
-      * [提示词工程进阶指南](notes/AI/提示词工程进阶指南.md)
     * **C语言**
       * [指针](notes/C语言/指针.md)
       * [橡皮鸭子调试法](notes/C语言/橡皮鸭子调试法.md)
@@ -10,6 +8,19 @@
     * **Git**
       * [Git全流程指南](notes/Git/Git全流程指南.md)
       * [Git子模块进阶指南](notes/Git/Git子模块进阶指南.md)
+    * **AI**
+      * [提示词工程进阶指南](notes/AI/提示词工程进阶指南.md)
+    * **Windows**
+      * [NVIDIA笔记-驱动不能登录](notes/Windows/NVIDIA笔记-驱动不能登录.md)
+      * [PowerShell历史命令](notes/Windows/PowerShell历史命令.md)
+      * [Windows笔记-系统设置](notes/Windows/Windows笔记-系统设置.md)
+      * [小狼毫配置](notes/Windows/小狼毫配置.md)
+      * [测试ssh重启重连时间](notes/Windows/测试ssh重启重连时间.md)
+      * [禁用更新](notes/Windows/禁用更新.md)
+      * **VM网络设置**
+        * [配置方案1](notes/Windows/VM网络设置/配置方案1.md)
+        * [配置方案2](notes/Windows/VM网络设置/配置方案2.md)
+        * [配置方案3](notes/Windows/VM网络设置/配置方案3.md)
     * **Linux**
       * [Arch安装](notes/Linux/Arch安装.md)
       * [Arch安装续](notes/Linux/Arch安装续.md)
@@ -45,6 +56,7 @@
       * [快速输入脚本](notes/Linux/快速输入脚本.md)
       * [显卡功率不够TDP](notes/Linux/显卡功率不够TDP.md)
       * [更新防止滚挂](notes/Linux/更新防止滚挂.md)
+      * [树莓派系统镜像备份瘦身烧录指南](notes/Linux/树莓派系统镜像备份瘦身烧录指南.md)
       * [树莓派网络代理](notes/Linux/树莓派网络代理.md)
       * [校园网保活](notes/Linux/校园网保活.md)
       * [桌面对比](notes/Linux/桌面对比.md)
@@ -58,6 +70,9 @@
       * [连接树莓派指南](notes/Linux/连接树莓派指南.md)
       * [键盘设置](notes/Linux/键盘设置.md)
       * [黑屏不能关机](notes/Linux/黑屏不能关机.md)
+    * **游戏**
+      * [MC1.21.11指令](notes/游戏/MC1.21.11指令.md)
+      * [泰拉瑞亚服务器开服指南](notes/游戏/泰拉瑞亚服务器开服指南.md)
     * **MarkDown**
       * [Markdown笔记-代码](notes/MarkDown/Markdown笔记-代码.md)
       * [Markdown笔记-列表](notes/MarkDown/Markdown笔记-列表.md)
@@ -71,22 +86,8 @@
       * [Markdown笔记-高级技巧](notes/MarkDown/Markdown笔记-高级技巧.md)
       * [Markdown笔记_速查表](notes/MarkDown/Markdown笔记_速查表.md)
       * [展示](notes/MarkDown/展示.md)
-    * **Windows**
-      * [NVIDIA笔记-驱动不能登录](notes/Windows/NVIDIA笔记-驱动不能登录.md)
-      * [PowerShell历史命令](notes/Windows/PowerShell历史命令.md)
-      * [Windows笔记-系统设置](notes/Windows/Windows笔记-系统设置.md)
-      * [小狼毫配置](notes/Windows/小狼毫配置.md)
-      * [测试ssh重启重连时间](notes/Windows/测试ssh重启重连时间.md)
-      * [禁用更新](notes/Windows/禁用更新.md)
-      * **VM网络设置**
-        * [配置方案1](notes/Windows/VM网络设置/配置方案1.md)
-        * [配置方案2](notes/Windows/VM网络设置/配置方案2.md)
-        * [配置方案3](notes/Windows/VM网络设置/配置方案3.md)
     * **万用手册**
       * [家庭常用药](notes/万用手册/家庭常用药.md)
       * [打印机笔记-佳能打印机故障大全错误代码参考](notes/万用手册/打印机笔记-佳能打印机故障大全错误代码参考.md)
       * [阳极氧化笔记-烤蓝](notes/万用手册/阳极氧化笔记-烤蓝.md)
       * [阳极氧化笔记-铝细谈](notes/万用手册/阳极氧化笔记-铝细谈.md)
-    * **游戏**
-      * [MC1.21.11指令](notes/游戏/MC1.21.11指令.md)
-      * [泰拉瑞亚服务器开服指南](notes/游戏/泰拉瑞亚服务器开服指南.md)
