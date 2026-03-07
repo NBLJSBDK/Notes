@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
   <style>
     /* --- 1. 全局布局统一 --- */
     blockquote { padding: 15px 20px !important; margin: 20px 0 !important; border-radius: 0 6px 6px 0; border-left: 4px solid #ddd; }
@@ -19,24 +20,17 @@
       --base-background-color: #1a1a1a;
       --base-color: #d1d1d1;
       --heading-color: #eeeeee;
-      
-      /* --- 侧边栏文字亮度大幅提升 --- */
       --sidebar-background: #252525;
-      --sidebar-name-color: #ffffff;             /* 侧边栏主标题：纯白 */
-      --sidebar-nav-link-color: #cccccc;         /* 普通链接：浅灰 */
-      --sidebar-nav-link-color--active: #ffffff; /* 选中链接：纯白 */
-      --sidebar-nav-pagetitle-color: #eeeeee;    /* 文件夹标题：近白 */
-      
+      --sidebar-name-color: #ffffff;
+      --sidebar-nav-link-color: #cccccc;
+      --sidebar-nav-link-color--active: #ffffff;
+      --sidebar-nav-pagetitle-color: #eeeeee;
       --link-color: #3498db;
     }
 
-    /* 侧边栏样式细节强制覆盖 */
-    body.dark .sidebar-nav ul li a { color: #cccccc !important; }
-    body.dark .sidebar-nav ul li.active > a { color: #3498db !important; font-weight: bold; }
-    body.dark .sidebar-nav strong { color: #eeeeee !important; }
-
-    body.dark ::selection { background: rgba(52, 152, 219, 0.4) !important; color: #ffffff !important; }
-    body.dark ::-moz-selection { background: rgba(52, 152, 219, 0.4) !important; color: #ffffff !important; }
+    /* 侧边栏折叠插件适配 */
+    body.dark .sidebar-nav .folder.collapse:before { color: #888 !important; }
+    body.dark .sidebar-nav .folder:before { color: #3498db !important; }
 
     /* 强力覆盖暗黑背景 */
     body.dark .content, body.dark .sidebar, body.dark .sidebar-nav, body.dark .markdown-section {
@@ -44,20 +38,21 @@
       color: #d1d1d1 !important;
     }
 
-    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark strong { color: #eeeeee !important; }
+    /* --- 3. 上一页/下一页插件暗黑适配 --- */
+    body.dark .pagination-item { color: #888 !important; }
+    body.dark .pagination-item-title { color: #3498db !important; }
+    body.dark .pagination-item:hover .pagination-item-title { color: #fff !important; }
 
-    /* --- 3. 顽固元素修正 --- */
+    /* 其余暗黑修正 */
+    body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark strong { color: #eeeeee !important; }
     body.dark .search input { background-color: #333 !important; color: #eee !important; border: 1px solid #444 !important; }
     body.dark .search .search-results { background-color: #252525 !important; color: #ccc !important; }
     body.dark .sidebar-toggle { background-color: rgba(26, 26, 26, 0.8) !important; color: #3498db !important; }
     body.dark .sidebar-toggle-button span { background-color: #3498db !important; }
-
-    /* --- 4. 引用块 & 代码块 --- */
     body.dark blockquote { background-color: #21262d !important; border-left-color: #3498db !important; color: #8b949e !important; }
-    body.dark blockquote strong { color: #ff7b72 !important; }
     body.dark pre { background-color: #0d1117 !important; border: 1px solid #30363d !important; }
     body.dark pre code { color: #e6edf3 !important; text-shadow: none !important; }
-
+    
     /* 语法高亮增强 */
     body.dark .token.comment { color: #8b949e !important; }
     body.dark .token.punctuation { color: #89ddff !important; }
@@ -66,21 +61,14 @@
     body.dark .token.operator { color: #ffab70 !important; }
     body.dark .token.keyword { color: #ff7b72 !important; }
     
-    /* 行内代码 */
-    body.dark :not(pre) > code {
-      background-color: rgba(110, 118, 129, 0.4) !important;
-      color: #f0f6fc !important; padding: 0.2em 0.4em !important; border-radius: 6px !important;
-    }
-
-    /* --- 5. 黑灰相间表格 --- */
+    /* 表格 */
     body.dark table { border-collapse: collapse; width: 100%; margin: 20px 0; border: 1px solid #303030 !important; background-color: #161616 !important; }
     body.dark th { background-color: #2c2c2c !important; color: #3498db !important; border: 1px solid #303030 !important; padding: 12px 10px !important; }
     body.dark td { border: 1px solid #303030 !important; padding: 12px 10px !important; }
-    body.dark tr:nth-child(odd) { background-color: #161616 !important; }
     body.dark tr:nth-child(even) { background-color: #242424 !important; }
     body.dark tr:hover { background-color: #2d333b !important; }
 
-    /* --- 6. 右上角切换按钮 --- */
+    /* --- 4. 右上角切换按钮 --- */
     #theme-toggle {
       position: fixed; top: 20px; right: 20px; width: 40px; height: 40px; background: #3498db; color: white; border: none; border-radius: 50%;
       cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 10000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -126,6 +114,12 @@
         '/.*/_sidebar.md': '/_sidebar.md' 
       },
       sidebarDisplayLevel: 1,
+      pagination: {
+        previousText: 'PREVIOUS',
+        nextText: 'NEXT',
+        crossChapter: true,
+        crossChapterText: true,
+      },
       search: {
         placeholder: '搜索笔记',
         noData: '找不到结果',
@@ -137,6 +131,10 @@
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- 引入上一页/下一页插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
